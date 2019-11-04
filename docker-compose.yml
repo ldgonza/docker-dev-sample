@@ -1,6 +1,7 @@
 version: '3'
 services:
   workspace:
+    user: workspace
     build:
       context: ./docker/workspace
     volumes:

@@ -1,10 +1,5 @@
 FROM debian:buster
-
 LABEL maintainer="Leonardo González <ldgonza@gmail.com>"
-
-# Adds work directory
-RUN mkdir /var/www
-WORKDIR /var/www
 
 # install basic packages
 RUN apt-get update && apt-get install -y -q --no-install-recommends \
@@ -13,3 +8,6 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
     vim \
     curl \
     && apt-get clean
+
+# Add user for the workspace
+RUN useradd -ms /bin/bash workspace
