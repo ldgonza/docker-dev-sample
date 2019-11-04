@@ -1,5 +1,14 @@
 version: '3'
 services:
+  mysql:
+    image: mysql
+    ports:
+      # To connect from the local machine, use tcp protocol (or the client will default to a socket-based connection that won't work)
+      # mysql -h localhost -P <port> --protocol=tcp -u root
+      - 3306
+      - 33060
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
   mongo:
     image: mongo
     ports:
@@ -13,3 +22,4 @@ services:
     tty: true
     depends_on:
       - mongo
+      - mysql
